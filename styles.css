@@ -1,0 +1,458 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #f8f8f8;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: black;
+  color: white;
+}
+
+header .logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+header nav ul li {
+  margin-left: 20px;
+}
+
+header nav ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.hero {
+  background-image: url(./photo_2025-04-10_14-44-56.jpg);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  background: linear-gradient(white) url(./photo_2025-04-10_14-44-56.jpg);
+  text-align: center;
+  justify-content: center;
+  padding: 50px 20px;
+  background-color: #f4f4f4;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: 80px;
+  font-weight: bold;
+}
+
+.hero p {
+  font-size: 18px;
+  color: #666;
+}
+
+.search-box {
+  margin-top: 20px;
+}
+
+.search-box input {
+  padding: 10px;
+  font-size: 16px;
+  width: 300px;
+  max-width: 80%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.search-box button {
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  background-color: #271010;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.recent-posts {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.recent-posts h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.posts {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.post {
+  margin: 10px;
+  width: 400px;
+  background: white;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: black;
+}
+
+.post img {
+  width: 100%;
+  border-radius: 5px;
+  transition: 10s ease-in-out;
+  overflow: hidden;
+}
+
+.post:hover {
+  transform: scale(1.1);
+  box-shadow: black;
+}
+
+.post p {
+  font-size: 16px;
+  color: black;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: gray;
+  color: white;
+  margin-top: 50px;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 40px auto;
+}
+
+h1 {
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+}
+
+.h16 {
+  text-align: center;
+  color: rgb(44, 64, 65);
+  margin-bottom: 40px;
+  font-size: 14px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.card img {
+  width: 100%;
+  display: block;
+}
+
+.card-content {
+  padding: 20px;
+}
+
+.h11 {
+  color: rgb(44, 64, 65);
+  font-size: 80px;
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
+}
+
+.card-text {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.read-more {
+  background: #000;
+  color: #fff;
+  padding: 8px 14px;
+  font-size: 13px;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.read-more:hover {
+  background: #444;
+}
+
+/* Mobil qurilmalar (iPhone 13 Pro va shunga o'xshash) */
+@media (max-width: 480px) {
+  header {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 10px;
+  }
+
+  header .logo {
+      font-size: 18px;
+      margin-bottom: 5px;
+  }
+
+  header nav ul {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+
+  header nav ul li {
+      margin-left: 0;
+      margin-bottom: 5px;
+  }
+
+  .hero {
+      padding: 20px;
+      height: auto;
+  }
+
+  .hero h1 {
+      font-size: 40px;
+  }
+
+  .hero p {
+      font-size: 14px;
+  }
+
+  .search-box input {
+      width: 100%;
+  }
+
+  .recent-posts {
+      padding: 30px 10px;
+  }
+
+  .recent-posts h2 {
+      font-size: 24px;
+  }
+
+  .posts {
+      flex-direction: column;
+  }
+
+  .post {
+      width: 100%;
+      margin: 10px 0;
+  }
+
+  .container {
+      width: 100%;
+      padding: 0 10px;
+      margin: 20px auto;
+  }
+
+  .grid {
+      grid-template-columns: 1fr;
+  }
+
+  .h11 {
+      font-size: 40px;
+  }
+}
+
+/* Noutbuklar */
+@media (min-width: 768px) and (max-width: 1200px) {
+  header {
+      padding: 15px 30px;
+  }
+
+  header .logo {
+      font-size: 22px;
+  }
+
+  header nav ul li {
+      margin-left: 15px;
+  }
+
+  .hero {
+      padding: 30px;
+  }
+
+  .hero h1 {
+      font-size: 60px;
+  }
+
+  .recent-posts {
+      padding: 40px 20px;
+  }
+
+  .recent-posts h2 {
+      font-size: 26px;
+  }
+
+  .posts {
+      justify-content: space-around;
+  }
+
+  .post {
+      width: 300px;
+  }
+
+  .container {
+      width: 80%;
+  }
+
+  .grid {
+      grid-template-columns: repeat(2, 1fr);
+  }
+
+  .h11 {
+      font-size: 60px;
+  }
+}
+
+/* Shaxsiy kompyuterlar */
+@media (min-width: 1200px) {
+  header {
+      padding: 20px 40px;
+  }
+
+  header .logo {
+      font-size: 24px;
+  }
+
+  header nav ul li {
+      margin-left: 20px;
+  }
+
+  .hero {
+      padding: 50px 20px;
+  }
+
+  .hero h1 {
+      font-size: 80px;
+  }
+
+  .recent-posts {
+      padding: 50px 20px;
+  }
+
+  .posts {
+      justify-content: center;
+  }
+
+  .post {
+      width: 400px;
+  }
+
+  .container {
+      width: 90%;
+  }
+
+  .grid {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+
+  .h11 {
+      font-size: 80px;
+  }
+}
+/* ... Mavjud CSS qoidalar ... */
+
+/* Telefonlar uchun media so'rovi */
+@media (max-width: 767px) {
+  header {
+    padding: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  header .logo {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  header nav ul {
+    flex-direction: row; /* Qatorga joylashuv */
+    flex-wrap: wrap; /* Sig'masa, keyingi qatorga o'tish */
+    align-items: flex-start;
+    width: 100%;
+    justify-content: flex-start; /* Chapga tekislash */
+  }
+
+  header nav ul li {
+    margin-left: 10px; /* Chapdan joy */
+    margin-bottom: 5px;
+  }
+
+  header nav ul li a {
+    font-size: 14px;
+    display: block;
+    padding: 5px 10px; /* Ichki joy */
+  }
+
+  .card {
+    width: 90%;
+    margin: 10px auto;
+  }
+
+  .card-title {
+    font-size: 16px;
+  }
+
+  .card-text {
+    font-size: 14px;
+  }
+}
+
+/* ... Qolgan CSS qoidalar ... */
+/* ... Mavjud CSS qoidalar ... */
+
+/* iPhone SE (2- va 3-avlod) uchun media so'rovi */
+@media (max-width: 375px) {
+  /* ... Navigatsiya uchun qoidalar ... */
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .card img {
+    height: auto;
+    max-height: 200px;
+  }
+
+  .card-content {
+    padding: 10px;
+  }
+
+  .card-title {
+    font-size: 16px;
+  }
+
+  .card-text {
+    font-size: 14px;
+  }
+
+  .read-more {
+    font-size: 12px;
+  }
+}
+
+/* ... Qolgan CSS qoidalar ... */
