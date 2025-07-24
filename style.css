@@ -1,0 +1,346 @@
+/* Umumiy sozlamalar */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Qorong'u rejim uchun stil */
+body.dark-mode {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+}
+
+/* Navbar stili tun rejimida */
+body.dark-mode .header {
+    background-color: #111; /* To'qroq fon rangi */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* To'q soyali effekt */
+}
+
+body.dark-mode .container,
+body.dark-mode section {
+    background-color: #2c2c2c;
+    box-shadow: 0 0 10px rgba(255,255,255,0.1);
+}
+
+body.dark-mode h1,
+body.dark-mode h2 {
+    color: #e0e0e0;
+}
+
+body.dark-mode h2 {
+    border-bottom-color: #555;
+}
+
+body.dark-mode textarea {
+    background-color: #383838;
+    color: #e0e0e0;
+    border-color: #555;
+}
+
+body.dark-mode .lang-select {
+    background-color: #383838;
+    color: #e0e0e0;
+    border-color: #555;
+}
+
+body.dark-mode .translation-display {
+    background-color: #383838;
+    border-color: #555;
+}
+
+body.dark-mode .vocabulary-card {
+    background-color: #383838;
+    border-color: #555;
+}
+
+body.dark-mode .quiz-option-btn {
+    background-color: #383838;
+    border-color: #555;
+    color: #e0e0e0;
+}
+
+/* Header stili */
+.header {
+    background-color: #007bff;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Quyosh rejimida box-shadow */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.theme-toggle-btn {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.theme-toggle-btn:hover i {
+    color: #ffd700;
+}
+
+/* Asosiy kontent konteyneri */
+.container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+/* Bo'limlar stili */
+section {
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #e9ecef;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+h2 {
+    color: #0056b3;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+    margin-top: 0;
+}
+
+/* Tab tugmalari stili */
+.translation-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.tab-button {
+    padding: 12px 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    cursor: pointer;
+    font-size: 1em;
+    color: #495057;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.tab-button .icon {
+    font-size: 1.2em;
+    min-width: 20px;
+    text-align: center;
+}
+
+.tab-button:hover {
+    background-color: #e9ecef;
+    border-color: #adb5bd;
+}
+
+.tab-button.active {
+    background-color: #e6f0ff;
+    border-color: #007bff;
+    color: #007bff;
+    font-weight: bold;
+}
+
+/* Tab kontentlari */
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Tilni tanlash komponentlari */
+.lang-selection-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.lang-input-group {
+    flex: 1;
+}
+
+.lang-select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.switch-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5em;
+    color: #007bff;
+    transition: transform 0.2s;
+}
+
+.switch-btn:hover {
+    transform: rotate(180deg);
+}
+
+/* Tarjimon */
+.translation-tool .form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical;
+    margin-bottom: 10px;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+#translateBtn {
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+#translateBtn:hover {
+    background-color: #218838;
+}
+
+.translation-display {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+#pronounceBtn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Lug'at kartalari */
+.vocabulary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.vocabulary-card {
+    background-color: #fff;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: transform 0.2s, background-color 0.3s;
+}
+
+.vocabulary-card:hover {
+    transform: translateY(-5px);
+}
+
+.original-word {
+    font-weight: bold;
+    color: #343a40;
+}
+
+.translation-word {
+    color: #6c757d;
+    margin-top: 5px;
+}
+
+/* Quiz */
+.quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.quiz-option-btn {
+    padding: 10px;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.quiz-option-btn:hover {
+    background-color: #e2e6ea;
+}
+
+.correct-answer {
+    background-color: #28a745 !important;
+    color: white;
+}
+
+.wrong-answer {
+    background-color: #dc3545 !important;
+    color: white;
+}
+
+/* Progress bar */
+.progress-bar-container {
+    background-color: #e9ecef;
+    border-radius: 5px;
+    height: 20px;
+    margin-top: 10px;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0;
+    background-color: #007bff;
+    border-radius: 5px;
+    transition: width 0.5s ease-in-out;
+}
+
+/* Mobil uchun */
+@media (max-width: 768px) {
+    .container {
+        margin: 10px;
+        padding: 10px;
+    }
+
+    .lang-selection-group {
+        flex-direction: column;
+    }
+}

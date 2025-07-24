@@ -3,126 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="/Desktop (6)/favicon_io/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/Desktop (6)/favicon_io/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/Desktop (6)/favicon_io/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
+    <title>Tillarni O'rganish va Tarjimon Platformasi</title>
+    <link rel="stylesheet" href="language.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="favicon/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="64x64" href="favicon/favicon-64x64.png">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <div class="logo">Art. Design</div>
-        <nav>
-            <ul>  
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Design</a></li>
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">About</a></li>
-            </ul>
-        </nav>
+    <header class="header">
+        <h1>Tillarni O'rganish va Tarjimon</h1>
+        <button id="themeToggleBtn" class="theme-toggle-btn"><i class="fas fa-moon"></i></button>
     </header>
 
-    <section class="hero">
-        <h1 class="h11">Art. Design Blog</h1>
-        <p>Explore the latest trends and insights in the world of art and design.</p>
-        <div class="search-box">
-            <input type="text" placeholder="Search...">
-            <button>Search</button>
-        </div>  
-    </section>
+    <main class="container">
+        <section class="translation-tabs">
+            <button class="tab-button active" data-tab="text-tab">
+                <span class="icon"><i class="fas fa-font"></i></span> Matn
+            </button>
+            <button class="tab-button" data-tab="image-tab">
+                <span class="icon"><i class="fas fa-image"></i></span> Rasmlar
+            </button>
+            <button class="tab-button" data-tab="document-tab">
+                <span class="icon"><i class="fas fa-file-alt"></i></span> Hujjatlar
+            </button>
+            <button class="tab-button" data-tab="website-tab">
+                <span class="icon"><i class="fas fa-globe"></i></span> Saytlar
+            </button>
+        </section>
 
-    <section class="recent-posts">
-        <h2 class="h11">Recent Arts  Designs</h2>
-        <div class="posts">
-            <div class="post">
-                <img src="./1.jpg" alt="Art 1">
-                <p>Make An Awesome Art Portfolio For College Or University</p>
-            </div>
-            <div class="post">
-                <img src="./2.jpg" alt="Art 2">
-                <p>Make An Awesome Art Portfolio For College Or University</p>
-            </div>
-            <div class="post">
-                <img src="./3.jpg" alt="Art 3">
-                <p>Make An Awesome Art Portfolio For College Or University</p>
-            </div>
-        </div>
-        <div class="posts">
-            <div class="post">
-                <img src="./4.jpg" alt="Art 4">
-                <p>Make An Awesome Art Portfolio For College Or University</p>
+        <section id="text-tab" class="translation-tool tab-content active">
+            <h2>Tarjimon</h2>
+            <div class="lang-selection-group">
+                <div class="lang-input-group">
+                    <select id="sourceLangSelect" class="lang-select">
+                        <option value="auto">Tilni aniqlash</option>
+                        <option value="uz">Uzbek</option>
+                        <option value="en">Ingliz</option>
+                        <option value="es">Ispan</option>
+                        <option value="fr">Frantsuz</option>
+                        <option value="de">Nemis</option>
+                        <option value="ru">Rus</option>
+                    </select>
+                </div>
+                <button id="switchBtn" class="switch-btn"><i class="fas fa-exchange-alt"></i></button>
+                <div class="lang-input-group">
+                    <select id="targetLangSelect" class="lang-select">
+                        <option value="uz">Uzbek</option>
+                        <option value="en" selected>Ingliz</option>
+                        <option value="es">Ispan</option>
+                        <option value="fr">Frantsuz</option>
+                        <option value="de">Nemis</option>
+                        <option value="ru">Rus</option>
+                    </select>
+                </div>
             </div>
             
-            <div class="post">
-                <img src="./5.jpg" alt="Art 5">
-                <p>Make An Awesome Art Portfolio For College Or University</p>
+            <div class="form-group">
+                <textarea id="sourceText" placeholder="Tarjima qilish uchun matn kiriting..."></textarea>
+                <button id="translateBtn">Tarjima qilish</button>
             </div>
-            
-            <div class="post">
-                <img src="./6.jpg" alt="Art ">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque?</p>
+            <div class="translation-display">
+                <p id="translatedText">Tarjima shu yerda paydo bo'ladi.</p>
+                <button id="pronounceBtn"><i class="fas fa-volume-up"></i> Talaffuz</button>
             </div>
-        </div>
-    </section>
-    <div class="container">
-        <h1>Recent Arts & Designs</h1>
-        <p class="h16">Recent Arts & Designs on the blog</p>
-        <div class="grid">
-          <div class="card">
-            <img src="./7.jpg" alt="Design 1">
-            <div class="card-content">
-              <div class="card-title">Lorem ipsum, dolor sit amet consectetur adipiscing</div>
-              <div class="card-text">Lorem ipsum dolor, sit amet consectetur adipiscing elit. Omnis libero quasi ipsum laudantium nihil? Quaerat.</div>
-              <a class="read-more" href="#">Read more</a>
-            </div>
-          </div>
-          <div class="card">
-            <img src="./8.jpg" alt="Design 1">
-            <div class="card-content">
-              <div class="card-title">Lorem ipsum, dolor sit amet consectetur adipiscing</div>
-              <div class="card-text">Lorem ipsum dolor, sit amet consectetur adipiscing elit. Omnis libero quasi ipsum laudantium nihil? Quaerat.</div>
-              <a class="read-more" href="#">Read more</a>
-            </div>
-          </div>
-          <div class="card">
-            <img src="./9.jpg" alt="Design 1">
-            <div class="card-content">
-              <div class="card-title">Lorem ipsum, dolor sit amet consectetur adipiscing</div>
-              <div class="card-text">Lorem ipsum dolor, sit amet consectetur adipiscing elit. Omnis libero quasi ipsum laudantium nihil? Quaerat.</div>
-              <a class="read-more" href="#">Read more</a>
-            </div>
-          </div>
-          <div class="card">
-            <img src="./10.jpg" alt="Design 1">
-            <div class="card-content">
-              <div class="card-title">Lorem ipsum, dolor sit amet consectetur adipiscing</div>
+        </section>
 
-<div class="card-text">Lorem ipsum dolor, sit amet consectetur adipiscing elit. Omnis libero quasi ipsum laudantium nihil? Quaerat.</div>
-              <a class="read-more" href="#">Read more</a>
-            </div>
-          </div>
-          <div class="card">
-            <img src="./11.jpg" alt="Design 1">
-            <div class="card-content">
-              <div class="card-title">Lorem ipsum, dolor sit amet consectetur adipiscing</div>
-              <div class="card-text">Lorem ipsum dolor, sit amet consectetur adipiscing elit. Omnis libero quasi ipsum laudantium nihil? Quaerat.</div>
-              <a class="read-more" href="#">Read more</a>
-            </div>
-          </div>
-          <div class="card">
-            <img src="./13.jpg" alt="Design 1">
-            <div class="card-content">
-              <div class="card-title">Lorem ipsum, dolor sit amet consectetur adipiscing</div>
-              <div class="card-text">Lorem ipsum dolor, sit amet consectetur adipiscing elit. Omnis libero quasi ipsum laudantium nihil? Quaerat.</div>
-              <a class="read-more" href="#">Read more</a>
-            </div>
-          </div>
-        </div>
-      </div>
+        <section id="image-tab" class="tab-content">
+            <h2>Rasm tarjimasi</h2>
+            <p>Bu bo'limda rasmlardagi matnni tarjima qilish funksiyasi bo'ladi.</p>
+        </section>
+        
+        <section id="document-tab" class="tab-content">
+            <h2>Hujjat tarjimasi</h2>
+            <p>Bu bo'limda hujjatlarni tarjima qilish funksiyasi bo'ladi.</p>
+        </section>
+        
+        <section id="website-tab" class="tab-content">
+            <h2>Sayt tarjimasi</h2>
+            <p>Bu bo'limda sayt URL manzilini kiritib, uni tarjima qilish funksiyasi bo'ladi.</p>
+        </section>
 
-    <footer>
-        <p>2025 Art  Design Blog. All rights reserved.</p>
-    </footer>
+        <section class="dictionary">
+            <h2>Shaxsiy lug'at</h2>
+            <div id="vocabularyList" class="vocabulary-grid">
+                </div>
+        </section>
+
+        <section class="quiz-section">
+            <h2>Bilimingizni sinash</h2>
+            <button id="startQuizBtn">Quizni boshlash</button>
+            <div id="quizContainer" class="quiz-container" style="display: none;">
+                <p id="quizQuestion"></p>
+                <div id="quizOptions" class="quiz-options">
+                    </div>
+                <div id="quizResult"></div>
+            </div>
+        </section>
+
+        <section class="progress-tracker">
+            <h2>Taraqqiyot</h2>
+            <div class="progress-info">
+                <p>Jami so'zlar: <span id="totalWords">0</span></p>
+                <p>Quizda ishtirok etgan: <span id="quizzesTaken">0</span></p>
+                <div class="progress-bar-container">
+                    <div id="progressBar" class="progress-bar"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
