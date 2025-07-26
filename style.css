@@ -6,6 +6,12 @@ body {
     margin: 0;
     padding: 0;
     transition: background-color 0.3s, color 0.3s;
+    line-height: 1.6; /* Matn o'qilishini yaxshilash */
+    box-sizing: border-box; /* Barcha elementlar uchun box-sizingni sozlash */
+}
+
+*, *::before, *::after {
+    box-sizing: inherit; /* Barcha elementlar uchun box-sizingni meros qilib olish */
 }
 
 /* Qorong'u rejim uchun stil */
@@ -14,10 +20,9 @@ body.dark-mode {
     color: #e0e0e0;
 }
 
-/* Navbar stili tun rejimida */
 body.dark-mode .header {
-    background-color: #111; /* To'qroq fon rangi */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* To'q soyali effekt */
+    background-color: #111;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
 body.dark-mode .container,
@@ -73,9 +78,13 @@ body.dark-mode .quiz-option-btn {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* Quyosh rejimida box-shadow */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 2.5em; /* Katta ekranlar uchun sarlavha hajmi */
 }
 
 .theme-toggle-btn {
@@ -89,6 +98,7 @@ body.dark-mode .quiz-option-btn {
     font-size: 1.5em;
     cursor: pointer;
     transition: color 0.3s;
+    padding: 5px; /* Bosish uchun maydonni kattalashtirish */
 }
 
 .theme-toggle-btn:hover i {
@@ -120,6 +130,7 @@ h2 {
     border-bottom: 2px solid #007bff;
     padding-bottom: 10px;
     margin-top: 0;
+    font-size: 2em; /* Katta ekranlar uchun sarlavha hajmi */
 }
 
 /* Tab tugmalari stili */
@@ -128,6 +139,7 @@ h2 {
     justify-content: center;
     gap: 10px;
     margin-bottom: 20px;
+    flex-wrap: wrap; /* Kichik ekranlarda tugmalarni keyingi qatorga o'tkazish */
 }
 
 .tab-button {
@@ -142,6 +154,9 @@ h2 {
     display: flex;
     align-items: center;
     gap: 8px;
+    flex-grow: 1; /* Teng kenglikda bo'lishi uchun */
+    justify-content: center; /* Kontentni markazga joylash */
+    white-space: nowrap; /* Matnni bir qatorda saqlash */
 }
 
 .tab-button .icon {
@@ -190,6 +205,11 @@ h2 {
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 1em;
+    appearance: none; /* Standart select stilini o'chirish */
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007bff%22%20d%3D%22M287%2C197.393L146.202%2C56.6a12.879%2C12.879%2C0%2C0%2C0%2C-18.192%2C0L5.394%2C197.393A12.885%2C12.885%2C0%2C0%2C0%2C14.5%2C216.5H277.9A12.885%2C12.885%2C0%2C0%2C0%2C287%2C197.393Z%22%2F%3E%3C%2Fsvg%3E'); /* Maxsus pastga yo'naltirilgan o'q */
+    background-repeat: no-repeat;
+    background-position: right 10px top 50%;
+    background-size: 12px auto;
 }
 
 .switch-btn {
@@ -199,6 +219,7 @@ h2 {
     font-size: 1.5em;
     color: #007bff;
     transition: transform 0.2s;
+    padding: 5px; /* Bosish uchun maydonni kattalashtirish */
 }
 
 .switch-btn:hover {
@@ -220,41 +241,76 @@ textarea {
     resize: vertical;
     margin-bottom: 10px;
     transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    font-size: 1em;
 }
 
 #translateBtn {
-    padding: 10px;
-    background-color: #28a745;
+    padding: 12px 20px;
+    background-color:  #007bff;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 1em;
+    font-size: 1.1em;
+    width: 100%; /* To'liq kenglikda qilish */
+    max-width: 200px; /* Maksimal kenglikni cheklash */
+    align-self: flex-end; /* O'ngga joylashtirish */
 }
 
 #translateBtn:hover {
-    background-color: #218838;
+    border:2px solid #0056b3;
+    background-color: white;
+    color: #007bff;
 }
 
 .translation-display {
     background-color: #fff;
     border: 1px solid #ccc;
-    padding: 10px;
-    margin-top: 10px;
+    padding: 15px;
+    margin-top: 15px;
     border-radius: 5px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     transition: background-color 0.3s, border-color 0.3s;
+    word-break: break-word; /* Uzoq so'zlarni qatorga sig'dirish */
+}
+
+#translatedText {
+    flex-grow: 1;
+    margin-right: 10px;
+    font-size: 1.1em;
+    color: #333;
+}
+
+#startQuizBtn {
+    padding: 2px 20px;
+    background-color:  #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    width: 100%; 
+    max-width: 200px; 
+    align-self: flex-end; 
+    align-items: center;
+    justify-content: center;
 }
 
 #pronounceBtn {
     background-color: #007bff;
     color: white;
     border: none;
-    padding: 8px 12px;
+    padding: 10px 15px;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 1em;
+    white-space: nowrap; /* Matnni bir qatorda saqlash */
+}
+
+#pronounceBtn:hover {
+    background-color: #0056b3;
 }
 
 /* Lug'at kartalari */
@@ -271,6 +327,9 @@ textarea {
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     transition: transform 0.2s, background-color 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .vocabulary-card:hover {
@@ -280,11 +339,13 @@ textarea {
 .original-word {
     font-weight: bold;
     color: #343a40;
+    font-size: 1.1em;
+    margin-bottom: 5px;
 }
 
 .translation-word {
     color: #6c757d;
-    margin-top: 5px;
+    font-size: 1em;
 }
 
 /* Quiz */
@@ -295,12 +356,14 @@ textarea {
 }
 
 .quiz-option-btn {
-    padding: 10px;
+    padding: 12px 15px;
     background-color: #f0f0f0;
     border: 1px solid #ddd;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+    text-align: left;
+    font-size: 1em;
 }
 
 .quiz-option-btn:hover {
@@ -309,12 +372,14 @@ textarea {
 
 .correct-answer {
     background-color: #28a745 !important;
-    color: white;
+    color: white !important;
+    border-color: #28a745 !important;
 }
 
 .wrong-answer {
     background-color: #dc3545 !important;
-    color: white;
+    color: white !important;
+    border-color: #dc3545 !important;
 }
 
 /* Progress bar */
@@ -323,6 +388,7 @@ textarea {
     border-radius: 5px;
     height: 20px;
     margin-top: 10px;
+    overflow: hidden; /* Chegaradan chiqib ketmasligi uchun */
 }
 
 .progress-bar {
@@ -331,16 +397,179 @@ textarea {
     background-color: #007bff;
     border-radius: 5px;
     transition: width 0.5s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 0.8em;
+    font-weight: bold;
 }
 
 /* Mobil uchun */
 @media (max-width: 768px) {
+    .header {
+        padding: 15px 10px;
+    }
+
+    .header h1 {
+        font-size: 2em;
+    }
+
+    .theme-toggle-btn {
+        right: 10px;
+        font-size: 1.3em;
+    }
+
+    .container {
+        margin: 15px;
+        padding: 15px;
+    }
+
+    section {
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+
+    h2 {
+        font-size: 1.7em;
+        padding-bottom: 8px;
+    }
+
+    .translation-tabs {
+        gap: 8px;
+    }
+
+    .tab-button {
+        padding: 10px 15px;
+        font-size: 0.9em;
+    }
+
+    .tab-button .icon {
+        font-size: 1em;
+        min-width: 18px;
+    }
+
+    .lang-selection-group {
+        flex-direction: column; /* Ustma-ust joylashish */
+        gap: 15px;
+    }
+
+    .lang-select {
+        padding: 8px;
+        font-size: 0.9em;
+    }
+
+    .switch-btn {
+        font-size: 1.3em;
+        padding: 5px;
+    }
+
+    textarea {
+        min-height: 80px;
+        padding: 8px;
+        font-size: 0.95em;
+    }
+
+    #translateBtn {
+        padding: 10px;
+        font-size: 0.95em;
+        max-width: 100%; /* Mobil ekranlarda to'liq kenglikda bo'lishi */
+    }
+
+    .translation-display {
+        flex-direction: column; /* Ustma-ust joylashish */
+        align-items: flex-start;
+        gap: 10px;
+        padding: 12px;
+    }
+
+    #translatedText {
+        font-size: 1em;
+        margin-right: 0; /* Marginni o'chirish */
+        margin-bottom: 10px; /* Pastdan bo'sh joy qo'shish */
+    }
+
+    #pronounceBtn {
+        padding: 8px 12px;
+        font-size: 0.9em;
+        width: 100%; /* Tugmani to'liq kenglikda qilish */
+    }
+
+    .vocabulary-grid {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* Mobil uchun kamroq min-width */
+        gap: 10px;
+    }
+
+    .vocabulary-card {
+        padding: 12px;
+    }
+
+    .original-word, .translation-word {
+        font-size: 0.95em;
+    }
+
+    .quiz-option-btn {
+        padding: 10px;
+        font-size: 0.95em;
+    }
+
+    .progress-bar-container {
+        height: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 1.6em;
+    }
+
+    .theme-toggle-btn {
+        font-size: 1.2em;
+        right: 8px;
+    }
+
     .container {
         margin: 10px;
         padding: 10px;
     }
 
-    .lang-selection-group {
-        flex-direction: column;
+    section {
+        padding: 10px;
+        margin-bottom: 15px;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+
+    .tab-button {
+        padding: 8px 10px;
+        font-size: 0.8em;
+        gap: 5px;
+    }
+
+    .tab-button .icon {
+        font-size: 0.9em;
+        min-width: 15px;
+    }
+
+    .lang-select, textarea, #translateBtn, .quiz-option-btn {
+        font-size: 0.85em;
+    }
+
+    .vocabulary-grid {
+        grid-template-columns: 1fr; /* Eng kichik ekranlarda kartalarni bitta ustunga joylashtirish */
+    }
+
+    .translation-display {
+        padding: 10px;
+    }
+
+    #translatedText {
+        font-size: 0.9em;
+    }
+
+    #pronounceBtn {
+        font-size: 0.85em;
     }
 }

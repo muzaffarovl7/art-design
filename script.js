@@ -5,7 +5,8 @@ class LanguageLearning {
         this.vocabulary = JSON.parse(localStorage.getItem('vocabulary')) || {};
         this.userProgress = JSON.parse(localStorage.getItem('progress')) || {
             quizzesTaken: 0,
-            correctAnswers: 0
+            correctAnswers: 0,
+            totalWordsLearned: 0 // Yangi qo'shildi: o'rganilgan so'zlar soni
         };
         this.quizWords = [];
         this.correctOption = '';
@@ -78,6 +79,7 @@ class LanguageLearning {
 
         $('.tab-button').removeClass('active');
         $(`[data-tab="${tabId}"]`).addClass('active');
+        this.updateUI(); // Tab o'zgarganda UI ni yangilash
     }
 
     // Tillarni almashtirish funksiyasi
@@ -93,7 +95,7 @@ class LanguageLearning {
 
     // Matnni tarjima qilish funksiyasi
     async translateText(text) {
-        if (!text) {
+        if (!text.trim()) {
             alert("Iltimos, tarjima qilish uchun matn kiriting.");
             return;
         }
@@ -137,7 +139,7 @@ class LanguageLearning {
             this.vocabulary[language] = [];
         }
 
-        const isExist = this.vocabulary[language].some(word => word.original === original);
+        const isExist = this.vocabulary[language].some(word => word.original.toLowerCase() === original.toLowerCase());
         if (!isExist) {
             this.vocabulary[language].push({
                 original: original,
@@ -146,6 +148,7 @@ class LanguageLearning {
                 practiced: 0
             });
             localStorage.setItem('vocabulary', JSON.stringify(this.vocabulary));
+            this.userProgress.totalWordsLearned++; // So'z qo'shilganda umumiy so'zlar sonini oshirish
             this.displayVocabulary();
         }
     }
@@ -158,9 +161,12 @@ class LanguageLearning {
         const words = this.vocabulary[currentLang] || [];
 
         if (words.length === 0) {
-            vocabList.html('<p>Lug\'atingiz bo\'sh. Tarjima qilib, so\'z qo\'shing.</p>');
+            vocabList.html('<p class="text-center">Lug\'atingiz bo\'sh. Tarjima qilib, so\'z qo\'shing.</p>');
             return;
         }
+
+        // So'zlarni eng yangi qo'shilganidan boshlab tartiblash
+        words.sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded));
 
         words.forEach(word => {
             const card = `<div class="vocabulary-card">
@@ -183,6 +189,7 @@ class LanguageLearning {
         this.userProgress.quizzesTaken++;
         this.updateProgress();
 
+        // Quiz uchun tasodifiy 4 ta so'zni tanlash
         this.quizWords = words.sort(() => 0.5 - Math.random()).slice(0, 4);
         const randomWord = this.quizWords[Math.floor(Math.random() * this.quizWords.length)];
         this.correctOption = randomWord.translation;
@@ -191,8 +198,11 @@ class LanguageLearning {
         $('#quizResult').text('');
         $('#quizContainer').show();
 
-        const optionsHtml = this.quizWords.map(word =>
-            `<button class="quiz-option-btn" data-translation="${word.translation}">${word.translation}</button>`
+        // Javob variantlarini tasodifiy tartiblash
+        const shuffledOptions = this.quizWords.map(word => word.translation).sort(() => 0.5 - Math.random());
+
+        const optionsHtml = shuffledOptions.map(translation =>
+            `<button class="quiz-option-btn" data-translation="${translation}">${translation}</button>`
         ).join('');
 
         $('#quizOptions').html(optionsHtml);
@@ -210,11 +220,16 @@ class LanguageLearning {
             this.userProgress.correctAnswers++;
         } else {
             selectedOption.addClass('wrong-answer');
+            // To'g'ri javobni ham ko'rsatish
+            $(`.quiz-option-btn[data-translation="${this.correctOption}"]`).addClass('correct-answer');
             $('#quizResult').text("Noto'g'ri javob. To'g'ri javob: " + this.correctOption);
         }
 
         this.updateProgress();
-        $('.quiz-option-btn').off('click');
+        $('.quiz-option-btn').off('click'); // Javob berilgandan keyin tugmalarni o'chirish
+        setTimeout(() => { // 2 sekunddan keyin yangi quiz yaratish
+            this.generateQuiz();
+        }, 2000);
     }
 
     // Taraqqiyotni yangilash funksiyasi
@@ -222,25 +237,30 @@ class LanguageLearning {
         const words = this.vocabulary[this.targetLangSelect.val()] || [];
         const totalWords = words.length;
         const quizzesTaken = this.userProgress.quizzesTaken;
-        
+        const correctAnswers = this.userProgress.correctAnswers;
+
         $('#totalWords').text(totalWords);
         $('#quizzesTaken').text(quizzesTaken);
+        $('#correctAnswers').text(correctAnswers);
 
-        if (totalWords > 0) {
-            const progressPercentage = (quizzesTaken / totalWords) * 100;
-            $('#progressBar').css('width', `${Math.min(progressPercentage, 100)}%`);
-        } else {
-            $('#progressBar').css('width', '0%');
+        let progressPercentage = 0;
+        if (quizzesTaken > 0) {
+            progressPercentage = (correctAnswers / quizzesTaken) * 100;
         }
+        
+        $('#progressBar').css('width', `${progressPercentage}%`);
+        $('#progressBar').text(`${Math.round(progressPercentage)}%`);
 
         localStorage.setItem('progress', JSON.stringify(this.userProgress));
     }
 
     // Matnni ovozli talaffuz qilish funksiyasi
     pronounceText(text) {
+        if (!text.trim()) return; // Bo'sh matnni o'qimaslik
+
         if ('speechSynthesis' in window) {
             const utterance = new SpeechSynthesisUtterance(text);
-            utterance.lang = this.targetLangSelect.val();
+            utterance.lang = this.targetLangSelect.val(); // Maqsad tilni ovozga sozlash
             window.speechSynthesis.speak(utterance);
         } else {
             alert("Bu brauzerda ovozli talaffuz qo'llab-quvvatlanmaydi.");
